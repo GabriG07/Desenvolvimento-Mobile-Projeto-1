@@ -1,7 +1,11 @@
 package com.example.projeto1.data
 
+import com.example.projeto1.data.api.DeezerTrack
+import com.example.projeto1.data.db.TrackEntity
+
 data class Track(
     val deezerId: Long,
+    val title: String,
     val artist: String,
     val coverUrl: String?,
     val previewUrl: String?,
