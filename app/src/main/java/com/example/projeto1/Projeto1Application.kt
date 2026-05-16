@@ -1,6 +1,11 @@
 package com.example.projeto1
 
 import android.app.Application
+import com.example.projeto1.data.AudioPlayer
+import com.example.projeto1.data.api.NetworkModule
+import com.example.projeto1.data.db.AppDatabase
+import com.example.projeto1.data.repository.MusicRepository
+import com.example.projeto1.data.repository.PlaylistRepository
 
 class Projeto1Application : Application() {
 

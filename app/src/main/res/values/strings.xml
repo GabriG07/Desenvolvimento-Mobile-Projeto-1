@@ -13,7 +13,9 @@
 
     <!-- Home screen -->
     <string name="home_search_hint">Insert a song or artist</string>
-    <string name="home_featured_title">This is Charlie Brown</string>
+    <string name="home_featured_continue">Continue listening</string>
+    <string name="home_featured_empty_title">Create your first playlist</string>
+    <string name="home_featured_empty_subtitle">Organize your favorite songs</string>
     <string name="home_section_picks">Weekly Picks</string>
     <string name="home_loading">Loading…</string>
     <string name="home_no_results">No songs found.</string>
@@ -68,5 +70,4 @@
     <string name="settings_theme_value">Dark</string>
     <string name="settings_about">About the app</string>
     <string name="settings_logout">Sign out</string>
-    <string name="settings_about_text">This project is an academic music player project for the Mobile Development course at UFSCar (DC), 2026.</string>
 </resources>

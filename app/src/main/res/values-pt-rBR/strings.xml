@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Identidade do app -->
+    <string name="app_name">Projeto 1</string>
+
+    <!-- Navegação inferior / comum -->
+    <string name="nav_skip_back">Anterior</string>
+    <string name="nav_home">Início</string>
+    <string name="nav_library">Biblioteca</string>
+    <string name="nav_settings">Configurações</string>
+    <string name="action_back">Voltar</string>
+    <string name="action_more">Mais opções</string>
+
+    <!-- Tela inicial -->
+    <string name="home_search_hint">Insira uma música ou um artista</string>
+    <string name="home_featured_continue">Continuar ouvindo</string>
+    <string name="home_featured_empty_title">Crie sua primeira playlist</string>
+    <string name="home_featured_empty_subtitle">Organize suas músicas favoritas</string>
+    <string name="home_section_picks">Escolhas da Semana</string>
+    <string name="home_loading">Carregando…</string>
+    <string name="home_no_results">Nenhuma música encontrada.</string>
+    <string name="home_search_error">Não foi possível buscar. Tente novamente.</string>
+
+    <!-- Biblioteca / playlists -->
+    <string name="library_title">Minha biblioteca</string>
+    <string name="library_empty">Você ainda não criou nenhuma playlist.</string>
+    <string name="library_create_playlist">Criar playlist</string>
+    <string name="library_new_playlist_title">Nova playlist</string>
+    <string name="library_new_playlist_hint">Nome da playlist</string>
+    <string name="action_create">Criar</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_delete">Excluir</string>
+    <string name="playlist_detail_empty">Essa playlist está vazia. Adicione músicas pela tela inicial.</string>
+    <string name="playlist_added">Adicionada em %1$s</string>
+    <string name="playlist_add_to">Adicionar à playlist</string>
+    <string name="playlist_add_no_playlists">Você ainda não criou nenhuma playlist. Vá em Biblioteca para criar.</string>
+
+    <!-- Player -->
+    <string name="player_now_playing">Tocando</string>
+    <string name="player_play">Tocar</string>
+    <string name="player_pause">Pausar</string>
+    <string name="player_next">Próxima</string>
+    <string name="player_previous">Anterior</string>
+    <string name="player_view_lyrics">Ver letra</string>
+    <string name="player_no_song">Nenhuma música selecionada. Escolha uma na tela inicial.</string>
+
+    <!-- Letras -->
+    <string name="lyrics_title">Letra</string>
+    <string name="lyrics_loading">Carregando letra…</string>
+    <string name="lyrics_not_found">Letra não disponível para essa música.</string>
+    <string name="lyrics_error">Não foi possível obter a letra. Verifique sua chave da API do Shazam.</string>
+
+    <!-- Configurações -->
+    <string name="settings_title">Configurações</string>
+    <string name="settings_user_name">Gabriel Henrique</string>
+    <string name="settings_user_plan">Plano Premium</string>
+    <string name="settings_section_playback">REPRODUÇÃO</string>
+    <string name="settings_section_general">GERAL</string>
+    <string name="settings_section_account">CONTA</string>
+    <string name="settings_audio_quality">Qualidade do áudio</string>
+    <string name="settings_audio_quality_value">Alta · 320 kbps</string>
+    <string name="settings_equalizer">Equalizador</string>
+    <string name="settings_equalizer_value">Rock</string>
+    <string name="settings_crossfade">Crossfade entre músicas</string>
+    <string name="settings_autoplay">Reprodução automática</string>
+    <string name="settings_notifications">Notificações</string>
+    <string name="settings_language">Idioma</string>
+    <string name="settings_language_value">Português</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_value">Escuro</string>
+    <string name="settings_about">Sobre o app</string>
+    <string name="settings_logout">Sair da conta</string>
+</resources>
