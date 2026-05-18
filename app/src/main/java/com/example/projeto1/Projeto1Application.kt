@@ -2,13 +2,15 @@ package com.example.projeto1
 
 import android.app.Application
 import com.example.projeto1.data.AudioPlayer
+import com.example.projeto1.data.Contact
 import com.example.projeto1.data.api.NetworkModule
+import com.example.projeto1.data.contatos
 import com.example.projeto1.data.db.AppDatabase
 import com.example.projeto1.data.repository.MusicRepository
 import com.example.projeto1.data.repository.PlaylistRepository
 
 class Projeto1Application : Application() {
-
+    lateinit var contact: Contact private set
     lateinit var musicRepository: MusicRepository private set
     lateinit var playlistRepository: PlaylistRepository private set
     lateinit var audioPlayer: AudioPlayer private set
@@ -23,6 +25,7 @@ class Projeto1Application : Application() {
             deezerApi = NetworkModule.deezerApi,
             lyricsOvhApi = NetworkModule.lyricsOvhApi,
         )
+        contact = contatos.first()
         audioPlayer = AudioPlayer()
     }
 

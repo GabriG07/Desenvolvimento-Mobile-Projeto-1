@@ -41,7 +41,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.projeto1.R
 import com.example.projeto1.data.db.PlaylistEntity
 import com.example.projeto1.ui.components.BannerCassette
-import com.example.projeto1.ui.components.MiniPlayer
 import com.example.projeto1.ui.components.AppBottomBar
 import com.example.projeto1.ui.theme.ColorBackground
 import com.example.projeto1.ui.theme.ColorGold
@@ -78,18 +77,18 @@ fun LibraryScreen(
         containerColor = ColorBackground,
         bottomBar = {
             Column {
-                MiniPlayer(
-                    track = currentTrack,
-                    isPlaying = isPlaying,
-                    onTogglePlay = { musicViewModel.togglePlay() },
-                    onClick = onOpenPlayer
-                )
+//                MiniPlayer(
+//                )
                 AppBottomBar(
                     currentRoute = "library",
                     onSkipBack = { musicViewModel.previous() },
                     onHome = onHome,
                     onLibrary = { },
-                    onSettings = onSettings
+                    onSettings = onSettings,
+                    track = currentTrack,
+                    isPlaying = isPlaying,
+                    onTogglePlay = { musicViewModel.togglePlay() },
+                    onClick = onOpenPlayer
                 )
             }
         },

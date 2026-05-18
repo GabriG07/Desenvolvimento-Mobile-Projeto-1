@@ -1,5 +1,6 @@
 package com.example.projeto1.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -15,7 +16,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -42,6 +42,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
@@ -51,7 +52,6 @@ import coil.compose.AsyncImage
 import com.example.projeto1.R
 import com.example.projeto1.data.Track
 import com.example.projeto1.ui.components.BannerCassette
-import com.example.projeto1.ui.components.MiniPlayer
 import com.example.projeto1.ui.components.AppBottomBar
 import com.example.projeto1.ui.theme.ColorBackground
 import com.example.projeto1.ui.theme.ColorSurface
@@ -65,6 +65,7 @@ import com.example.projeto1.data.db.PlaylistEntity
 fun HomeScreen(
     onOpenPlayer: () -> Unit,
     onOpenSettings: () -> Unit,
+    onChatsPage: () -> Unit,
     onOpenLibrary: () -> Unit,
     onOpenPlaylist: (Long) -> Unit,
     musicViewModel: MusicViewModel = viewModel(factory = MusicViewModel.Factory),
@@ -81,18 +82,18 @@ fun HomeScreen(
         containerColor = ColorBackground,
         bottomBar = {
             Column {
-                MiniPlayer(
-                    track = currentTrack,
-                    isPlaying = isPlaying,
-                    onTogglePlay = { musicViewModel.togglePlay() },
-                    onClick = onOpenPlayer
-                )
+//                MiniPlayer(
+//                )
                 AppBottomBar(
                     currentRoute = "home",
                     onSkipBack = { musicViewModel.previous() },
                     onHome = { /* onde estamos */},
                     onLibrary = onOpenLibrary,
-                    onSettings = onOpenSettings
+                    onSettings = onOpenSettings,
+                    track = currentTrack,
+                    isPlaying = isPlaying,
+                    onTogglePlay = { musicViewModel.togglePlay() },
+                    onClick = onOpenPlayer
                 )
             }
         }
@@ -113,11 +114,16 @@ fun HomeScreen(
                         style = MaterialTheme.typography.headlineLarge,
                         modifier = Modifier.weight(1f)
                     )
-                    IconButton(onClick = onOpenSettings) {
-                        Icon(
-                            imageVector = Icons.Filled.MoreHoriz,
-                            contentDescription = stringResource(R.string.action_more),
-                            tint = ColorTextPrimary
+                    IconButton(
+                        onClick = onChatsPage,
+                        modifier = Modifier
+//                            .align(Alignment.End)
+                            .padding(8.dp)
+                    ) {
+                        Image(
+                            painter = painterResource(R.drawable.chat_icon),
+                            modifier = Modifier.size(40.dp),
+                            contentDescription = null,
                         )
                     }
                 }

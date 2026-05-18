@@ -3,6 +3,13 @@
     <!-- Identidade do app -->
     <string name="app_name">Projeto 1</string>
 
+    <!-- Sign in -->
+    <string name="sign_in_page_title">Insira suas credenciais</string>
+    <string name="create_account">Criar conta</string>
+    <string name="sign_in_user_field">Username</string>
+    <string name="sign_in_phone_field">Telefone</string>
+    <string name="sign_in_confirm">Confirmar</string>
+
     <!-- Navegação inferior / comum -->
     <string name="nav_skip_back">Anterior</string>
     <string name="nav_home">Início</string>
@@ -70,4 +77,13 @@
     <string name="settings_theme_value">Escuro</string>
     <string name="settings_about">Sobre o app</string>
     <string name="settings_logout">Sair da conta</string>
+
+    <!-- Chats -->
+    <string name="chats_title">Suas conversas</string>
+    <string name="chat_search">Procure contatos ou grupos</string>
+    <string name="new_chat_title">Nova conversa</string>
+    <string name="search_contacts">Procure contatos ou grupos</string>
+    <string name="new_group">Novo grupo</string>
+    <string name="your_contacts">Seus contatos</string>
+
 </resources>

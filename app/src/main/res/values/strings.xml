@@ -3,6 +3,13 @@
     <!-- App identity -->
     <string name="app_name">Projeto 1</string>
 
+    <!-- Sign in -->
+    <string name="sign_in_page_title">Insert your credentials</string>
+    <string name="create_account">Create account</string>
+    <string name="sign_in_user_field">Username</string>
+    <string name="sign_in_phone_field">Phone number</string>
+    <string name="sign_in_confirm">Confirm</string>
+
     <!-- Bottom navigation / common -->
     <string name="nav_skip_back">Previous</string>
     <string name="nav_home">Home</string>
@@ -70,4 +77,13 @@
     <string name="settings_theme_value">Dark</string>
     <string name="settings_about">About the app</string>
     <string name="settings_logout">Sign out</string>
+
+    <!-- Chats -->
+    <string name="chats_title">Your chats</string>
+    <string name="chat_search">Search for contacts or groups</string>
+    <string name="new_chat_title">Nova conversa</string>
+    <string name="search_contacts">Search for contacts or groups</string>
+    <string name="new_group">New group</string>
+    <string name="your_contacts">Your contacts</string>
+
 </resources>

@@ -6,10 +6,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -55,7 +57,11 @@ fun LyricsScreen(
                 onSkipBack = { musicViewModel.previous() },
                 onHome = onHome,
                 onLibrary = onLibrary,
-                onSettings = onSettings
+                onSettings = onSettings,
+                track = null,
+                isPlaying = null,
+                onTogglePlay = null,
+                onClick = null
             )
         }
     ) { padding ->
@@ -63,7 +69,8 @@ fun LyricsScreen(
             Box(modifier = Modifier.padding(8.dp)) {
                 IconButton(onClick = onBack) {
                     Icon(
-                        imageVector = Icons.Filled.ArrowBack,
+                        imageVector = Icons.Filled.ArrowBackIosNew,
+                        modifier = Modifier.size(32.dp),
                         contentDescription = stringResource(R.string.action_back),
                         tint = ColorTextPrimary
                     )

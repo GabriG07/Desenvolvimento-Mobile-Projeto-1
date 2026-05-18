@@ -10,14 +10,13 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -39,6 +38,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.projeto1.R
+import com.example.projeto1.data.UserModel
 import com.example.projeto1.ui.components.AppBottomBar
 import com.example.projeto1.ui.theme.ColorBackground
 import com.example.projeto1.ui.theme.ColorDivider
@@ -48,13 +48,17 @@ import com.example.projeto1.ui.theme.ColorSurface
 import com.example.projeto1.ui.theme.ColorTextPrimary
 import com.example.projeto1.ui.theme.ColorTextSecondary
 import com.example.projeto1.ui.theme.ColorTextTertiary
+import com.example.projeto1.ui.viewmodel.OnboardingViewModel
 
 @Composable
 fun SettingsScreen(
     onBack: () -> Unit,
     onHome: () -> Unit,
-    onLibrary: () -> Unit
+    onSignIn: () -> Unit,
+    onLibrary: () -> Unit,
+    onboardingViewModel: OnboardingViewModel
 ) {
+    val loggedUser: UserModel = onboardingViewModel.loggedUser
     var crossfade by remember { mutableStateOf(true) }
     var autoplay by remember { mutableStateOf(true) }
     var notifications by remember { mutableStateOf(false) }
@@ -67,12 +71,18 @@ fun SettingsScreen(
                 onSkipBack = {},
                 onHome = onHome,
                 onLibrary = onLibrary,
-                onSettings = { }
+                onSettings = { },
+                track = null,
+                isPlaying = null,
+                onTogglePlay = null,
+                onClick = null
             )
         }
     ) { padding ->
         LazyColumn(
-            modifier = Modifier.padding(padding).fillMaxSize(),
+            modifier = Modifier
+                .padding(padding)
+                .fillMaxSize(),
             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
@@ -84,7 +94,8 @@ fun SettingsScreen(
                         modifier = Modifier.align(Alignment.CenterStart)
                     ) {
                         Icon(
-                            imageVector = Icons.Filled.ArrowBack,
+                            imageVector = Icons.Filled.ArrowBackIosNew,
+                            modifier = Modifier.size(32.dp),
                             contentDescription = stringResource(R.string.action_back),
                             tint = ColorTextPrimary
                         )
@@ -99,7 +110,7 @@ fun SettingsScreen(
             }
 
             // Card do perfil
-            item { ProfileCard() }
+            item { ProfileCard(userName=loggedUser.userName) }
 
             //Seção de reprodução
             item {
@@ -178,6 +189,7 @@ fun SettingsScreen(
                             style = MaterialTheme.typography.titleMedium,
                             modifier = Modifier
                                 .fillMaxWidth()
+                                .clickable(onClick = onSignIn)
                                 .padding(16.dp)
                         )
                     }
@@ -188,7 +200,14 @@ fun SettingsScreen(
 }
 
 @Composable
-private fun ProfileCard() {
+private fun ProfileCard(userName: String) {
+    var names: List<String> = userName.split(" ")
+    var initials:String
+    if (names.size > 1) {
+        initials = "${names.first().first()}${names.last().first()}"
+    } else {
+        initials = "${names.first().first()}"
+    }
     Surface(color = ColorSurface, shape = RoundedCornerShape(12.dp), modifier = Modifier.fillMaxWidth()) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -202,7 +221,7 @@ private fun ProfileCard() {
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "GH",
+                    text = initials,
                     color = ColorBackground,
                     style = MaterialTheme.typography.titleLarge
                 )
@@ -210,7 +229,8 @@ private fun ProfileCard() {
             Spacer(Modifier.width(12.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = stringResource(R.string.settings_user_name),
+//                    text = stringResource(R.string.settings_user_name),
+                    text = userName,
                     color = ColorTextPrimary,
                     style = MaterialTheme.typography.titleMedium
                 )

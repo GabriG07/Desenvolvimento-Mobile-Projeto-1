@@ -18,7 +18,17 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.res.painterResource
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import coil.compose.AsyncImage
+import com.example.projeto1.R
 
 //Cassete mostrado no player
 @Composable
@@ -117,20 +127,41 @@ fun BannerCassette(
             drawRect(
                 color = Color(0x55101218),
                 topLeft = Offset(0f, cy - bandHeight / 2f),
-                size = androidx.compose.ui.geometry.Size(w, bandHeight)
+                size = Size(w, bandHeight)
             )
 
-            for (cx in listOf(leftX, rightX)) {
-                drawCircle(color = Color(0xFF111319), radius = r, center = Offset(cx, cy))
-                drawCircle(
-                    color = Color(0xFF353841),
-                    radius = r,
-                    center = Offset(cx, cy),
-                    style = Stroke(width = 4f)
-                )
 
-                drawCircle(color = Color(0xFF050507), radius = r * 0.30f, center = Offset(cx, cy))
+//            for (cx in listOf(leftX, rightX)) {
+//                drawCircle(color = Color(0xFF111319), radius = r, center = Offset(cx, cy))
+//                drawCircle(
+//                    color = Color(0xFF353841),
+//                    radius = r,
+//                    center = Offset(cx, cy),
+//                    style = Stroke(width = 4f)
+//                )
+//
+//                drawCircle(color = Color(0xFF050507), radius = r * 0.30f, center = Offset(cx, cy))
+//            }
+        }
+
+        val imageModifier = Modifier.size(240.dp)
+
+        Column(
+            modifier = Modifier.padding(bottom = (24.dp))
+        ){
+            Row(
+                Modifier.fillMaxWidth().wrapContentHeight(),
+                horizontalArrangement = Arrangement.Center,
+            ){
+                Image(
+                    painter = painterResource(R.drawable.tape_detail),
+//                contentDescription = stringResource(id = R.string.dog_content_description)
+                    contentDescription = null,
+                    contentScale = ContentScale.FillWidth,
+                    modifier = imageModifier,
+                )
             }
+
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.projeto1.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -8,7 +9,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -19,6 +19,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.SkipNext
@@ -42,6 +43,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -63,6 +66,7 @@ fun PlayerScreen(
     onOpenLyrics: () -> Unit,
     onHome: () -> Unit,
     onLibrary: () -> Unit,
+    onChatsPage: () -> Unit,
     onSettings: () -> Unit,
     musicViewModel: MusicViewModel = viewModel(factory = MusicViewModel.Factory),
     playlistViewModel: PlaylistViewModel = viewModel(factory = PlaylistViewModel.Factory)
@@ -82,7 +86,11 @@ fun PlayerScreen(
                 onSkipBack = { musicViewModel.previous() },
                 onHome = onHome,
                 onLibrary = onLibrary,
-                onSettings = onSettings
+                onSettings = onSettings,
+                track = null,
+                isPlaying = null,
+                onTogglePlay = null,
+                onClick = null
             )
         }
     ) { padding ->
@@ -103,7 +111,8 @@ fun PlayerScreen(
                         .padding(8.dp)
                 ) {
                     Icon(
-                        imageVector = Icons.Filled.ArrowBack,
+                        imageVector = Icons.Filled.ArrowBackIosNew,
+                        modifier = Modifier.size(32.dp),
                         contentDescription = stringResource(R.string.action_back),
                         tint = ColorTextPrimary
                     )
@@ -117,6 +126,19 @@ fun PlayerScreen(
                     PortraitCassetteCover(
                         coverUrl = track?.coverUrl,
                         modifier = Modifier.fillMaxWidth(0.65f)
+                    )
+                }
+
+                IconButton(
+                    onClick = onChatsPage,
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(8.dp)
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.chat_icon),
+                        modifier = Modifier.size(40.dp),
+                        contentDescription = null,
                     )
                 }
             }

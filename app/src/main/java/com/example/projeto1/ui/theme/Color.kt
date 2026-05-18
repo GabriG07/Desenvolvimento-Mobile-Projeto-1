@@ -3,8 +3,11 @@ package com.example.projeto1.ui.theme
 import androidx.compose.ui.graphics.Color
 
 // Palette extracted from the Figma prototype
-val ColorBackground = Color(0xFF1B1D24)      // app background (dark)
-val ColorSurface = Color(0xFF262932)         // cards / surfaces
+val ColorBackground = Color(0xFF2E333A)      // app background (dark)
+val ColorSurface = Color(0xFF24292F)
+val ColorDarkBackground = Color(0xff1C1F22)// cards /
+val ColorCardBlack = Color(0xff0D0E10)// cards
+val ColorCardWhite = Color(0xffEAEEF4)
 val ColorSurfaceDim = Color(0xFF21242C)      // subtle surface variant
 val ColorGold = Color(0xFFE5B53C)            // primary accent (yellow / gold)
 val ColorGoldDim = Color(0xFFB89132)         // darker gold for pressed states
