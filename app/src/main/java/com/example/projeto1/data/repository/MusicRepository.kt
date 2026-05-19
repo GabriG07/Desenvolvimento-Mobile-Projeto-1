@@ -38,7 +38,7 @@ class MusicRepository(
     // lyrics.ovh
     private suspend fun fetchFromLyricsOvh(track: Track): String? {
         return try {
-            Log.d("MusicRepository", "lyrics.ovh -> ${track.artist} / ${track.title}")
+//            Log.d("MusicRepository", "lyrics.ovh -> ${track.artist} / ${track.title}")
 
             val resp = lyricsOvhApi.getLyrics(
                 artist = track.artist.trim(),
@@ -48,25 +48,25 @@ class MusicRepository(
             val text = resp.lyrics?.trim()
 
             if (text.isNullOrBlank()) {
-                Log.d("MusicRepository", "lyrics.ovh: campo de letra vazio")
+//                Log.d("MusicRepository", "lyrics.ovh: campo de letra vazio")
                 null
             } else {
-                Log.d("MusicRepository", "lyrics.ovh: encontrou ${text.length} caracteres")
+//                Log.d("MusicRepository", "lyrics.ovh: encontrou ${text.length} caracteres")
                 text
             }
 
         } catch (e: HttpException) {
             // 404 significa que a música não foi encontrada no lyrics.ovh.
             if (e.code() == 404) {
-                Log.d("MusicRepository", "lyrics.ovh: 404 (não encontrada)")
+//                Log.d("MusicRepository", "lyrics.ovh: 404 (não encontrada)")
                 null
             } else {
-                Log.e("MusicRepository", "lyrics.ovh HTTP ${e.code()}", e)
+//                Log.e("MusicRepository", "lyrics.ovh HTTP ${e.code()}", e)
                 throw LyricsException.HttpError(e.code())
             }
 
         } catch (e: Throwable) {
-            Log.e("MusicRepository", "falha no lyrics.ovh", e)
+//            Log.e("MusicRepository", "falha no lyrics.ovh", e)
             throw LyricsException.Network(e.message ?: "erro de rede")
         }
     }
