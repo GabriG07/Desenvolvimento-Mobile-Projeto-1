@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
  */
 class AudioPlayer {
 
-    private var player: MediaPlayer? = null
+    private var player: MediaPlayer? = null //representa o player de áudio do Android
     private val scope = CoroutineScope(Dispatchers.Main)
 
     private val _currentTrack = MutableStateFlow<Track?>(null)
@@ -44,8 +44,7 @@ class AudioPlayer {
 
     /*
       Reproduz a música no [startIndex] dentro da lista fornecida. Próxima/Anterior vão
-      navegar dentro dessa lista. Essa é a forma preferida de iniciar a reprodução
-      pela UI: passe a busca/playlist inteira e o índice do item tocado.
+      navegar dentro dessa lista. Passamos a busca/playlist inteira e o índice do item tocado.
      */
     fun playFromQueue(tracks: List<Track>, startIndex: Int) {
         if (tracks.isEmpty()) return
@@ -92,16 +91,15 @@ class AudioPlayer {
 
         player = MediaPlayer().apply {
             setDataSource(url)
-            setOnPreparedListener {
+            setOnPreparedListener { //roda quando o áudio está pronto para tocar
                 start()
                 _isPlaying.value = true
                 startProgressTicker()
             }
-            setOnCompletionListener {
+            setOnCompletionListener { //roda quando a música termina
                 _isPlaying.value = false
                 _progress.value = 1f
-                // Avança automaticamente para a próxima música quando o preview termina.
-                playNext()
+                playNext() // Avança automaticamente para a próxima música quando o preview termina.
             }
             setOnErrorListener { _, _, _ ->
                 _isPlaying.value = false
@@ -121,12 +119,6 @@ class AudioPlayer {
             _isPlaying.value = true
             startProgressTicker()
         }
-    }
-
-    fun stop() {
-        release()
-        _isPlaying.value = false
-        _progress.value = 0f
     }
 
     private fun startProgressTicker() {

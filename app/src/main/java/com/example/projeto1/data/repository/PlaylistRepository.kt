@@ -4,7 +4,6 @@ import com.example.projeto1.data.Track
 import com.example.projeto1.data.db.PlaylistDao
 import com.example.projeto1.data.db.PlaylistEntity
 import com.example.projeto1.data.db.TrackEntity
-import com.example.projeto1.data.toDomain
 import com.example.projeto1.data.toEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
@@ -27,9 +26,6 @@ class PlaylistRepository(private val dao: PlaylistDao) {
     suspend fun markPlaylistAsPlayed(id: Long) =
         dao.updateLastPlayed(id, System.currentTimeMillis())
 
-    fun observeLastPlayedPlaylist(): Flow<PlaylistEntity?> =
-        dao.observeLastPlayedPlaylist()
-
     @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
     fun observeLastPlayedWithCover(): Flow<Pair<PlaylistEntity, String?>?> =
         dao.observeLastPlayedPlaylist().flatMapLatest { playlist ->
@@ -45,17 +41,10 @@ class PlaylistRepository(private val dao: PlaylistDao) {
     fun observeFirstCoverOf(playlistId: Long): Flow<String?> =
         dao.observeFirstTrackOf(playlistId).map { it?.coverUrl }
 
-    fun observeTracks(playlistId: Long): Flow<List<Track>> =
-        dao.observeTracks(playlistId).map { list -> list.map { it.toDomain() } }
-
     fun observeTrackEntities(playlistId: Long): Flow<List<TrackEntity>> =
         dao.observeTracks(playlistId)
 
-    suspend fun getTrackEntities(playlistId: Long): List<TrackEntity> =
-        dao.getTracks(playlistId)
-
     suspend fun addTrack(playlistId: Long, track: Track) {
-        // Evita duplicatas
         val already = dao.getTracks(playlistId).any { it.deezerId == track.deezerId }
         if (!already) dao.insertTrack(track.toEntity(playlistId))
     }

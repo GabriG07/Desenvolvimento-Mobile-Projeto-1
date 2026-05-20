@@ -47,16 +47,9 @@ fun AppBottomBar(
     onClick: (() -> Unit?)?,
     modifier: Modifier = Modifier
 ) {
-    val onSettingsRoute = currentRoute == "settings"
-    val thirdIcon: ImageVector = if (onSettingsRoute) Icons.Filled.Settings else Icons.Filled.Bookmark
-    val thirdLabel = if (onSettingsRoute) R.string.nav_settings else R.string.nav_library
-    val thirdAction: () -> Unit = if (onSettingsRoute) onSettings else onLibrary
-    val thirdActive = currentRoute == "library" || currentRoute == "settings"
 
     var barHeight = 80;
-    if (track == null) {
-        barHeight = 80;
-    } else {
+    if (track != null) {
         barHeight = 160;
     }
 

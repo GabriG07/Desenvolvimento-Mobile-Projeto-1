@@ -13,6 +13,7 @@ import androidx.room.RoomDatabase
 abstract class AppDatabase : RoomDatabase() {
     abstract fun playlistDao(): PlaylistDao
 
+    //Singleton para acessar a instância do banco de dados
     companion object {
         @Volatile private var instance: AppDatabase? = null
 
@@ -21,7 +22,7 @@ abstract class AppDatabase : RoomDatabase() {
                 instance ?: Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "runman.db"
+                    "app.db"
                 )
                     .fallbackToDestructiveMigration()
                     .build().also { instance = it }

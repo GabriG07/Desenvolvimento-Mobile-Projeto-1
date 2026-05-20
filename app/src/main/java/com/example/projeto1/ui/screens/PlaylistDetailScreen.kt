@@ -101,7 +101,7 @@ fun PlaylistDetailScreen(
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    items(tracks.size, key = { idx -> tracks[idx].rowId }) { idx ->
+                    items(tracks.size, key = { idx -> tracks[idx].id }) { idx ->
                         val entity = tracks[idx]
                         Surface(
                             color = ColorSurface,
@@ -148,7 +148,7 @@ fun PlaylistDetailScreen(
                                         overflow = TextOverflow.Ellipsis
                                     )
                                 }
-                                IconButton(onClick = { playlistViewModel.removeTrack(entity.rowId) }) {
+                                IconButton(onClick = { playlistViewModel.removeTrack(entity.id) }) {
                                     Icon(
                                         imageVector = Icons.Filled.Delete,
                                         contentDescription = stringResource(R.string.action_delete),

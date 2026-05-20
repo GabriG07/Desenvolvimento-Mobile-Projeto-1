@@ -24,7 +24,7 @@ import androidx.room.PrimaryKey
     indices = [Index("playlistId")]
 )
 data class TrackEntity(
-    @PrimaryKey(autoGenerate = true) val rowId: Long = 0,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val playlistId: Long,
     val deezerId: Long,
     val title: String,

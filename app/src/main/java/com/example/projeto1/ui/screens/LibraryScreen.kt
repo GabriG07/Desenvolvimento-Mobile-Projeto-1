@@ -51,10 +51,10 @@ import com.example.projeto1.ui.viewmodel.PlaylistViewModel
 
 private val cardColors = listOf(
     Color(0xFF7A1414),
-    Color(0xFF6E5A8C),
-    Color(0xFF42627B),
-    Color(0xFF7A4F25),
-    Color(0xFF3F6B4E)
+    Color(0xFF4B2E83),
+    Color(0xFF1F3A8A),
+    Color(0xFF6B3F1B),
+    Color(0xFF1F5F3F)
 )
 
 @Composable
@@ -77,8 +77,6 @@ fun LibraryScreen(
         containerColor = ColorBackground,
         bottomBar = {
             Column {
-//                MiniPlayer(
-//                )
                 AppBottomBar(
                     currentRoute = "library",
                     onSkipBack = { musicViewModel.previous() },

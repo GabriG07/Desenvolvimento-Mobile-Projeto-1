@@ -82,8 +82,6 @@ fun HomeScreen(
         containerColor = ColorBackground,
         bottomBar = {
             Column {
-//                MiniPlayer(
-//                )
                 AppBottomBar(
                     currentRoute = "home",
                     onSkipBack = { musicViewModel.previous() },

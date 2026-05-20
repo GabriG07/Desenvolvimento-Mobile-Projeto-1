@@ -8,7 +8,7 @@ import com.example.projeto1.data.toDomain
 import retrofit2.HttpException
 
 /**
- * Repository responsável pelas operações de música feitas pela internet.
+ * Repository responsável pelas operações de música feitas pela internet (APIs)
  *
  * Duas APIs web são usadas:
  *  - Deezer (busca + preview MP3 de 30 segundos)
@@ -72,9 +72,7 @@ class MusicRepository(
     }
 }
 
-/**
- * Representa os diferentes tipos de erro que podem acontecer ao buscar letras.
- */
+//Representa os diferentes tipos de erro que podem acontecer ao buscar letras.
 sealed class LyricsException(message: String) : Exception(message) {
     data class HttpError(val code: Int) : LyricsException("Serviço de letras retornou HTTP $code")
     data class Network(val detail: String) : LyricsException("Erro de rede: $detail")

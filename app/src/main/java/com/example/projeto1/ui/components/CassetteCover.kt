@@ -129,19 +129,6 @@ fun BannerCassette(
                 topLeft = Offset(0f, cy - bandHeight / 2f),
                 size = Size(w, bandHeight)
             )
-
-
-//            for (cx in listOf(leftX, rightX)) {
-//                drawCircle(color = Color(0xFF111319), radius = r, center = Offset(cx, cy))
-//                drawCircle(
-//                    color = Color(0xFF353841),
-//                    radius = r,
-//                    center = Offset(cx, cy),
-//                    style = Stroke(width = 4f)
-//                )
-//
-//                drawCircle(color = Color(0xFF050507), radius = r * 0.30f, center = Offset(cx, cy))
-//            }
         }
 
         val imageModifier = Modifier.size(240.dp)
@@ -155,7 +142,6 @@ fun BannerCassette(
             ){
                 Image(
                     painter = painterResource(R.drawable.tape_detail),
-//                contentDescription = stringResource(id = R.string.dog_content_description)
                     contentDescription = null,
                     contentScale = ContentScale.FillWidth,
                     modifier = imageModifier,

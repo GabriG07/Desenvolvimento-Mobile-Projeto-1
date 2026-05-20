@@ -29,12 +29,12 @@ interface PlaylistDao {
     @Query("SELECT * FROM playlists WHERE lastPlayedAt IS NOT NULL ORDER BY lastPlayedAt DESC LIMIT 1")
     fun observeLastPlayedPlaylist(): Flow<PlaylistEntity?>
 
-    @Query("SELECT * FROM playlist_tracks WHERE playlistId = :playlistId ORDER BY rowId ASC LIMIT 1")
+    @Query("SELECT * FROM playlist_tracks WHERE playlistId = :playlistId ORDER BY rowId ASC LIMIT 1") //pega a primeira musica de determinada playlist
     fun observeFirstTrackOf(playlistId: Long): Flow<TrackEntity?>
 
     // Músicas de uma playlist
     @Query("SELECT * FROM playlist_tracks WHERE playlistId = :playlistId ORDER BY rowId ASC")
-    fun observeTracks(playlistId: Long): Flow<List<TrackEntity>>
+    fun observeTracks(playlistId: Long): Flow<List<TrackEntity>> //Diferente de List, Flow permite acompanhar mudanças em tempo real
 
     @Query("SELECT * FROM playlist_tracks WHERE playlistId = :playlistId ORDER BY rowId ASC")
     suspend fun getTracks(playlistId: Long): List<TrackEntity>
